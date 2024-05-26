@@ -68,8 +68,7 @@ pub fn main() !void {
     rl.endDrawing();
     // wait for user to close out of game
     while (!rl.windowShouldClose()) {
-        rl.beginDrawing();
-        rl.endDrawing();
+        rl.pollInputEvents();
     }
 }
 
