@@ -5,7 +5,7 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{ .preferred_optimize_mode = .ReleaseSafe });
     const exe = b.addExecutable(.{
         .name = "TicTacToe",
-        .root_source_file = .{ .path = "src/main.zig" },
+        .root_source_file = b.path("src/main.zig"),
         .optimize = optimize,
         .target = target,
     });
@@ -15,11 +15,9 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
     const raylib = raylib_zig.module("raylib");
-    const raylib_math = raylib_zig.module("raylib-math");
     const raylib_artifact = raylib_zig.artifact("raylib");
     exe.linkLibrary(raylib_artifact);
     exe.root_module.addImport("raylib", raylib);
-    exe.root_module.addImport("raylib-math", raylib_math);
 
     b.installArtifact(exe);
 
