@@ -11,8 +11,8 @@ const WinState = struct {
     },
 };
 
-const screen_width = 300;
-const screen_height = 300;
+const screen_width = 800;
+const screen_height = 800;
 const margin = 6;
 const border_width = 4;
 
@@ -61,6 +61,7 @@ pub fn main() !void {
             break;
         }
     } else {
+        // user exited from game
         return;
     }
     rl.beginDrawing();
